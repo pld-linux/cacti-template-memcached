@@ -2,12 +2,13 @@
 Summary:	Memcached Cacti Template
 Name:		cacti-plugin-%{plugin}
 Version:	1.0
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	http://content.dealnews.com/dealnews/developers/cacti-%{plugin}-%{version}.tar.gz
 # Source0-md5:	1febadae299aff606860da60ef3bd80e
 URL:		http://dealnews.com/developers/cacti/memcached.html
+Patch0:		shebang.patch
 Requires:	cacti >= 0.8.6j
 Requires:	cacti-add_template
 Requires:	python-memcached
@@ -30,6 +31,7 @@ for both the get and set commands.
 
 %prep
 %setup -q -n cacti-%{plugin}-%{version}
+%patch0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT

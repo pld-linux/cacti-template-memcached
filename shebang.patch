@@ -1,0 +1,11 @@
+--- cacti-plugin-memcached/cacti_memcached_host_template.xml~	2006-07-04 06:43:34.000000000 +0300
++++ cacti-plugin-memcached/cacti_memcached_host_template.xml	2009-07-16 11:08:14.860757243 +0300
+@@ -1119,7 +1119,7 @@
+ 	<hash_0300115e00ab857a021489fc3c0c1a30677e34>
+ 		<name>Memcached - Statistics</name>
+ 		<type_id>1</type_id>
+-		<input_string>python &lt;path_cacti&gt;/scripts/memcached.py &lt;hostname&gt;</input_string>
++		<input_string>&lt;path_cacti&gt;/scripts/memcached.py &lt;hostname&gt;</input_string>
+ 		<fields>
+ 			<hash_0700118f2eae45e32f2fd9c348f18e40fe295b>
+ 				<name>Host to query for memcached statistics.</name>
