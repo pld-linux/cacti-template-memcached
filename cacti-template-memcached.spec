@@ -1,17 +1,18 @@
 %define		plugin memcached
 Summary:	Memcached Cacti Template
-Name:		cacti-plugin-%{plugin}
+Name:		cacti-template-%{plugin}
 Version:	1.0
-Release:	3
+Release:	4
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	http://content.dealnews.com/dealnews/developers/cacti-%{plugin}-%{version}.tar.gz
 # Source0-md5:	1febadae299aff606860da60ef3bd80e
 URL:		http://dealnews.com/developers/cacti/memcached.html
 Patch0:		shebang.patch
-Requires:	cacti >= 0.8.6j
-Requires:	cacti-add_template
+BuildRequires:	rpmbuild(macros) >= 1.554
+Requires:	cacti >= 0.8.7e-8
 Requires:	python-memcached
+Obsoletes:	cacti-plugin-memcached
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -36,11 +37,11 @@ for both the get and set commands.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{resourcedir},%{scriptsdir}}
-cp -a *.xml $RPM_BUILD_ROOT%{resourcedir}
-install *.py $RPM_BUILD_ROOT%{scriptsdir}
+cp -p *.xml $RPM_BUILD_ROOT%{resourcedir}
+install -p *.py $RPM_BUILD_ROOT%{scriptsdir}
 
 %post
-%{_sbindir}/cacti-add_template %{resourcedir}/cacti_memcached_host_template.xml
+%cacti_import_template %{resourcedir}/cacti_memcached_host_template.xml
 
 %clean
 rm -rf $RPM_BUILD_ROOT
