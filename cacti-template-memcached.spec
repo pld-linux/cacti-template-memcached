@@ -2,7 +2,7 @@
 Summary:	Memcached Cacti Template
 Name:		cacti-template-%{plugin}
 Version:	1.0
-Release:	4
+Release:	5
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	http://content.dealnews.com/dealnews/developers/cacti-%{plugin}-%{version}.tar.gz
